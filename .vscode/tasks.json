@@ -1,0 +1,23 @@
+{
+    // See https://github.com/microsoft/vscode/issues/90288 for more information
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run QEMU",
+            "type": "shell",
+            "isBackground": true,
+            "command": "make clean && make && echo Starting QEMU && qemu-system-arm -machine lm3s811evb -kernel gcc/RTOSDemo.bin -s -S -nographic",
+            "problemMatcher": {
+                "pattern": {
+                    "regexp": "^(Starting QEMU)",
+                    "line": 1,
+                },
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "^(Starting QEMU)",
+                    "endsPattern": "^(Starting QEMU)"
+                }
+            }
+        }
+    ]
+}
